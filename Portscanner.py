@@ -50,7 +50,7 @@ def scan(port):
 		print("Couldn't connect to server.")
 		sys.exit()
 
-def threader():
+def Threader():
 	while True:
 		worker = q.get()
 		scan(worker)
@@ -58,7 +58,7 @@ def threader():
 q = Queue()
 
 for i in range(speed):
-	t = threading.Thread(target=threader)
+	t = threading.Thread(target=Threader)
 	t.daemon = True
 	t.start()
 	
