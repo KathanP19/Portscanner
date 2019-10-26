@@ -9,15 +9,15 @@ from datetime import datetime
 print_lock = threading.Lock()
 t1 = datetime.now()
 
-#Define our target 
+# Define our target 
 if len(sys.argv) == 2:
-	target = socket.gethostbyname(sys.argv[1]) #Translate a host name to IPV4
+	target = socket.gethostbyname(sys.argv[1]) # Translate a host name to IPV4
 else:
 	print("Invalid amount of arguments.")
 	print("Syntax: python3 Portscanner.py <ip>")
 	sys.exit()
 
-#Add banner
+# Add banner
 print("-" *50)
 print("Scanning target "+target)
 print("Time started: "+str(datetime.now()))
@@ -30,9 +30,9 @@ speed = int ((stop - start) + 1)
 def scan(port):
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		socket.setdefaulttimeout(1) #is a float
-		result=s.connect_ex((target,port)) #return error indicator
-		#print("Checking port {}".format(port))
+		socket.setdefaulttimeout(1) # is a float
+		result=s.connect_ex((target,port)) # return error indicator
+		# print("Checking port {}".format(port))
 		if result == 0:
 			with print_lock:
 				print("Port {} is open".format(port))
