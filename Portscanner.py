@@ -14,7 +14,7 @@ if len(sys.argv) == 2:
     target = socket.gethostbyname(sys.argv[1])  # Translate a host name to IPV4
 else:
     print("Invalid amount of arguments.")
-    print("Syntax: python3 Portscanner.py <ip>")
+    print("Syntax: python3 Portscanner.py <IP Address>")
     sys.exit()
 
 # Add banner
@@ -33,7 +33,7 @@ def scan(port):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)  # is a float
         result = s.connect_ex((target, port))  # return error indicator
-        # print("Checking port {}".format(port))
+        print("Checking port {}".format(port))
         if result == 0:
             with print_lock:
                 print("Port {} is open".format(port))
